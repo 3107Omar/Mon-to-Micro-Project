@@ -21,8 +21,8 @@ script:
     #  - docker tag udagram-api-user omarzztelcocloud/udagram-api-user:v1 # tagging
     #  - docker build -t udagram-frontend ./udagram-frontend # build frontend server ionic
     #  - docker tag udagram-frontend omarzztelcocloud/udagram-frontend:v1 # tagging
-  - docker build -t udagram-reverseproxy ./udagram-reverseproxy # build reverse proxy nginx
-  - docker tag udagram-reverseproxy omarzztelcocloud/udagram-reverseproxy:v1 # tagging
+    #  - docker build -t udagram-reverseproxy ./udagram-reverseproxy # build reverse proxy nginx
+    #  - docker tag udagram-reverseproxy omarzztelcocloud/udagram-reverseproxy:v1 # tagging
 
 
 after_success:
@@ -30,6 +30,6 @@ after_success:
   - docker push omarzztelcocloud/udagram-api-feed:v1
     #  - docker push omarzztelcocloud/udagram-api-user:v1
     #  - docker push omarzztelcocloud/udagram-frontend:v1    
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push omarzztelcocloud/udagram-reverseproxy:v1
+    #  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    #  - docker push omarzztelcocloud/udagram-reverseproxy:v1
 
