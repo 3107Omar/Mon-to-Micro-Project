@@ -16,20 +16,19 @@ before_script:
 script:
         #  - docker --version # print the version for logging
   - docker build -t udagram-api-feed ./udagram-api-feed # build udagram backend feed
-  - docker tag udagram-api-feed omarzztelcocloud/udagram-api-feed:v2 # tag the image
-    #  - docker build -t udagram-api-user ./udagram-api-user # backend user
-    #  - docker tag udagram-api-user omarzztelcocloud/udagram-api-user:v1 # tagging
-    #  - docker build -t udagram-frontend ./udagram-frontend # build frontend server ionic
-    #  - docker tag udagram-frontend omarzztelcocloud/udagram-frontend:v1 # tagging
-    #  - docker build -t udagram-reverseproxy ./udagram-reverseproxy # build reverse proxy nginx
-    #  - docker tag udagram-reverseproxy omarzztelcocloud/udagram-reverseproxy:v1 # tagging
+  - docker tag udagram-api-feed omarzztelcocloud/udagram-api-feed:v4 # tag the image
+  - docker build -t udagram-api-user ./udagram-api-user # backend user
+  - docker tag udagram-api-user omarzztelcocloud/udagram-api-user:v4 # tagging
+  - docker build -t udagram-frontend ./udagram-frontend # build frontend server ionic
+  - docker tag udagram-frontend omarzztelcocloud/udagram-frontend:v4 # tagging
+  - docker build -t udagram-reverseproxy ./udagram-reverseproxy # build reverse proxy nginx
+  - docker tag udagram-reverseproxy omarzztelcocloud/udagram-reverseproxy:v4 # tagging
 
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push omarzztelcocloud/udagram-api-feed:v2
-    #  - docker push omarzztelcocloud/udagram-api-user:v1
-    #  - docker push omarzztelcocloud/udagram-frontend:v1    
-    #  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    #  - docker push omarzztelcocloud/udagram-reverseproxy:v1
+  - docker push omarzztelcocloud/udagram-api-feed:v4
+  - docker push omarzztelcocloud/udagram-api-user:v4
+  - docker push omarzztelcocloud/udagram-frontend:v4    
+  - docker push omarzztelcocloud/udagram-reverseproxy:v4
 
