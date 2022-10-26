@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: backend-feed
+spec:
+   containers:
+     - name: backend-feed
+       image: omarzztelcocloud/udagram-api-feed:v4
+       envFrom:
+         - configMapRef:
+             name: env-secret
+         - configMapRef:
+             name: env-configmap
+       volumeMounts:
+       - name: aws-config-volume
+         mountPath: /root/.aws
+   volumes:
+     - name: aws-config-volume
+       configMap:
+         name: aws-secret
+   restartPolicy: Never

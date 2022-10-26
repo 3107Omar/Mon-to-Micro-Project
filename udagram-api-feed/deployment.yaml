@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-api-feed
+  name: udagram-api-feed
+spec:
+  selector:
+    matchLabels:
+      service: udagram-api-feed
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        service: udagram-api-feed
+    spec:
+      containers:
+      - image: omarzztelcocloud/udagram-api-feed:v4
+        name: udagram-api-feed
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: env-secret
+          - configMapRef:
+              name: env-configmap
+        volumeMounts:
+        - name: aws-config-volume
+          mountPath: /root/.aws
+      restartPolicy: Always
+      volumes:
+        - name: aws-config-volume
+          configMap:
+            name: aws-secret
+
+
