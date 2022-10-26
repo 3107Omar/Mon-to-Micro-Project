@@ -18,6 +18,13 @@ spec:
       - image: omarzztelcocloud/udagram-frontend:v5
         name: udagram-frontend
         imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "1024Mi"
+            cpu: "500m"
+          limits:
+            memory: "2048Mi"
+            cpu: "1000m"       
         ports:
         - containerPort: 8100
       restartPolicy: Always

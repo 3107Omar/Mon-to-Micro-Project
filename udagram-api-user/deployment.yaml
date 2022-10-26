@@ -23,6 +23,13 @@ spec:
           - configMapRef:
               name: env-configmap
         imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "1024Mi"
+            cpu: "500m"
+          limits:
+            memory: "2048Mi"
+            cpu: "1000m"        
         ports:
         - containerPort: 8080
 
